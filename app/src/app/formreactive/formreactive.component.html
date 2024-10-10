@@ -1,0 +1,40 @@
+<form [formGroup]="loginForm" (ngSubmit)="loginuser()">
+  <label>username</label>
+  <input
+    type="text"
+    placeholder="Enter Name"
+    name="username"
+    formControlName="username"
+  />
+  <br /><br />
+  <label>password</label>
+  <input
+    type="text"
+    placeholder="Enter password"
+    name="password"
+    formControlName="password"
+  />
+  <br /><br />
+  <select name="item" formControlName="item">
+    <option value="" disabled selected>Select an item</option>
+    <option>item 1</option>
+    <option>item 2</option>
+    <option>item 3</option>
+  </select>
+  <br /><br />
+  <label>Gender</label>
+  <input type="radio" name="gender" value="male" formControlName="gender" />
+  Male
+  <input type="radio" name="gender" value="female" formControlName="gender" />
+  Female <br /><br />
+  <div formArrayName="Address">
+    <div *ngFor="let control of addressControls?.controls; let i = index">
+        <input [formControlName]="i" placeholder="Address" />
+      </div>
+  </div>
+  <br /><br />
+  
+  <input type="checkbox" name="checkbox" formControlName="checkbox"/> Pls Press The Check Box
+  <br /><br />
+  <button type="submit" [disabled]="loginForm.invalid">login</button>
+</form>
